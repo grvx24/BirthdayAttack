@@ -27,10 +27,12 @@
                             </Button.Style>
                         </Button>
                         <Label Content="Calculate hashes" HorizontalAlignment="Left" Margin="-1,103,-6,0" VerticalAlignment="Top" Width="979" Background="#FFC7B4DE"/>
-                        <ListBox Margin="13,145,804,241">
-                            <ListBoxItem>Hash function #1</ListBoxItem>
-                            <ListBoxItem>Hash function #2</ListBoxItem>
-                            <ListBoxItem>MD5</ListBoxItem>
+                        <ListBox x:Name="ListOfHashes"  Margin="13,145,804,241">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
                         <Label Content="Select hash function" HorizontalAlignment="Left" Margin="12,212,0,0" VerticalAlignment="Top" Height="26"/>
                         <Button Background="LightGreen" HorizontalAlignment="left" Width="151" Content="Load file with messages" Click="LoadMessages_Click" Margin="17,252,0,181"/>

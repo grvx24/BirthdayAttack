@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BirthdayAttack.FileFactory;
+using BirthdayAttack.Hash;
 using Microsoft.Win32;
 
 namespace BirthdayAttack
@@ -27,6 +28,12 @@ namespace BirthdayAttack
         public MainWindow()
         {
             InitializeComponent();
+            LoadHashList();
+        }
+
+        private void LoadHashList()
+        {
+            ListOfHashes.ItemsSource = HashManager.GetListOfAvailableFunctions();
         }
 
         private void LoadMessages_Click(object sender, RoutedEventArgs e)
