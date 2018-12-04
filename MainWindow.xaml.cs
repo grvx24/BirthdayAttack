@@ -29,12 +29,6 @@ namespace BirthdayAttack
             InitializeComponent();
         }
 
-        static String ReadingFromFile(String path)
-        {
-            string s = File.ReadAllText(path, Encoding.Default);
-            return s;
-        }
-
         private void LoadMessages_Click(object sender, RoutedEventArgs e)
         {
             var loadedFile = FileManager.LoadMessagesFile();
