@@ -53,10 +53,16 @@ namespace BirthdayAttack
                 MessageBox.Show("No file loaded!");
                 return;
             }
-            string fakeMsg = "kapitan morgan";
             int fakeBits = 32;
-            HashManager.ShortCutMessageBySpecificFunction(fakeMsg, fakeBits, ListOfHashes.SelectedIndex);
 
+            byte[] _4bytes = new byte[4];
+            
+
+            for (int i = 0; i < loadedData.Length; i += 4)
+            {
+                Array.Copy(loadedData, i, _4bytes, 0, 4);
+                HashManager.ShortCutMessageBySpecificFunction(_4bytes, fakeBits, ListOfHashes.SelectedIndex);
+            }           
         }
 
         private void GenerateMessage_Click(object sender, RoutedEventArgs e)

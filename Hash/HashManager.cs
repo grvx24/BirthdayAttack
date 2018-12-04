@@ -19,7 +19,7 @@ namespace BirthdayAttack.Hash
             return HashList;
         }
 
-        public static string ShortCutMessageBySpecificFunction(string msg,int shortCutSizeInBits, int id)
+        public static string ShortCutMessageBySpecificFunction(byte[] msg,int shortCutSizeInBits, int id)
         {
             return HashList[id].ShortCutMessage(msg, shortCutSizeInBits);
         }

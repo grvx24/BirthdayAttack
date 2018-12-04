@@ -9,6 +9,7 @@ namespace BirthdayAttack.Hash
     public interface IHash
     {
         string Name { get; }
-        string ShortCutMessage(string message,int shortCutSizeInBits);
+        string ShortCutMessage(byte[] message,int shortCutSizeInBits);
+        string ShortCutStringMessage(string message, int shortCutSizeInBits);
     }
 }
