@@ -20,9 +20,7 @@ using Microsoft.Win32;
 
 namespace BirthdayAttack
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         private byte[] loadedData;
@@ -31,6 +29,7 @@ namespace BirthdayAttack
         {
             InitializeComponent();
         }
+
         static String ReadingFromFile(String path)
         {
             string s = File.ReadAllText(path, Encoding.Default);
@@ -77,8 +76,6 @@ namespace BirthdayAttack
                     Generation_loading.Value = percents;
                     Loading_percents.Content = percents + "%";
                 });
-
-
             };
             dg.CompleteEvent += () =>
             {
