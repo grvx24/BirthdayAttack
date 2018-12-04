@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="CustomMd5.cs" />
     <Compile Include="DataGenerator.cs" />
+    <Compile Include="FileManager.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="IDataGenerator.cs" />
     <Compile Include="MainWindow.xaml.cs">

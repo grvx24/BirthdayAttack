@@ -107,20 +107,8 @@ namespace BirthdayAttack
 
                 Dispatcher.Invoke(() =>
                 {
-                    SaveFileDialog fileDialog = new SaveFileDialog();
-                    if (fileDialog.ShowDialog() == true)
-                    {
-                        var stream = File.Open(fileDialog.FileName, FileMode.Create);
-                        using (BinaryWriter bw = new BinaryWriter(stream))
-                        {
-                            for (int i = 0; i < result.Length; i++)
-                            {
-                                bw.Write(result[i]);
-                            }                          
-                        }
-                    }
+                    FileManager.SaveFile(result);
                 });
-
             });
         }
 
