@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.IO;
 
-namespace BirthdayAttack
+namespace BirthdayAttack.FileFactory
 {
     public static class FileManager
     {
@@ -19,6 +19,22 @@ namespace BirthdayAttack
                     }
                 }
             }
+        }
+
+        public static LoadingFileDto LoadMessagesFile()
+        {
+            LoadingFileDto result = new LoadingFileDto();
+
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == true)
+            {
+                result.LoadedData = File.ReadAllBytes(fileDialog.FileName);
+                result.FileName = fileDialog.SafeFileName;
+                result.LoadedDataLength = result.LoadedData.Length;
+                result.NumberOfMessages = result.LoadedDataLength / sizeof(int);
+            }
+
+            return result;
         }
     }
 }

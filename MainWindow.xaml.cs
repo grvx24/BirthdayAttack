@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BirthdayAttack.FileFactory;
 using Microsoft.Win32;
 
 namespace BirthdayAttack
@@ -38,25 +39,12 @@ namespace BirthdayAttack
 
         private void LoadMessages_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == true)
-            {
-                loadedData = File.ReadAllBytes(fileDialog.FileName);
-            }
-
-            if (loadedData != null)
-            {
-                fileName_label.Content = "File name: "+fileDialog.SafeFileName;
-                fileSize_label.Content = "File size: " + loadedData.Length + " bytes";
-                MessagesNumber_label.Content = "Number of messages: " + loadedData.Length / sizeof(int);
-            }
-            else
-            {
-                fileName_label.Content = "File name: ";
-                fileSize_label.Content = "File size: 0";
-                MessagesNumber_label.Content = "Number of messages: 0";
-            }
-
+            var loadedFile = FileManager.LoadMessagesFile();
+            loadedData = loadedFile.LoadedData;
+            
+            fileName_label.Content = "File name: " + loadedFile.FileName;
+            fileSize_label.Content = "File size: " + loadedFile.LoadedDataLength;
+            MessagesNumber_label.Content = "Number of messages: " + loadedFile.NumberOfMessages;
         }
 
         private void GenerateHashes_Click(object sender, RoutedEventArgs e)
@@ -103,6 +91,10 @@ namespace BirthdayAttack
 
             Task.Run(() =>
             {
+                if (String.IsNullOrEmpty(numOfMessages))
+                {
+                    throw new ArgumentOutOfRangeException("Minimum length is 1 ");
+                }
                 var result = dg.GenerateUniqueIntegers(int.Parse(numOfMessages));
 
                 Dispatcher.Invoke(() =>
