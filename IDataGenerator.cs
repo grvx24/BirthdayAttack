@@ -9,5 +9,5 @@ namespace BirthdayAttack
     interface IDataGenerator
     {
         int[] GenerateUniqueIntegers(int length);
-
+    }
 }

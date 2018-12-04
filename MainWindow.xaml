@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BirthdayAttack"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+      Title="MainWindow" Height="600" Width="1100">
     <Grid>
-        
+        <TabControl x:Name="tabItems">
+            <TabItem Header="Birthday">
+                <Viewbox>
+                    <Grid Height="458" Width="972">
+
+                        <TextBox x:Name="message_num" HorizontalAlignment="Left" Margin="17,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="165" RenderTransformOrigin="0,0.412"/>
+                        <Label Content="Generate input data" HorizontalAlignment="Left" Margin="-1,5,-2,0" VerticalAlignment="Top" Width="975" Background="#FFC7B4DE"/>
+                        <Label Content="Enter the number of messages" HorizontalAlignment="Left" Margin="13,64,0,0" VerticalAlignment="Top"/>
+                        <Button Background="LightBlue" HorizontalAlignment="left" Width="113" Content="Generate" Click="GenerateMessage_Click" Margin="190,45,0,389"/>
+                        <Label Content="Calculate hashes" HorizontalAlignment="Left" Margin="-1,103,-6,0" VerticalAlignment="Top" Width="979" Background="#FFC7B4DE"/>
+                        <ListBox Margin="13,145,804,241">
+                            <ListBoxItem>Hash function #1</ListBoxItem>
+                            <ListBoxItem>Hash function #2</ListBoxItem>
+                            <ListBoxItem>MD5</ListBoxItem>
+                        </ListBox>
+                        <Label Content="Select hash function" HorizontalAlignment="Left" Margin="12,212,0,0" VerticalAlignment="Top" Height="26"/>
+                        <Button Background="LightGreen" HorizontalAlignment="left" Width="160" Content="Load file with messages" Click="LoadMessages_Click" Margin="12,252,0,181"/>
+                        <Button Background="LightBlue" HorizontalAlignment="left" Width="157" Content="Generate" Click="GenerateHashes_Click" Margin="14,282,0,152"/>
+                        <Label Content="Birthday attack" HorizontalAlignment="Left" Margin="-1,330,-2,0" VerticalAlignment="Top" Width="973" Background="#FFC7B4DE"/>
+                        <Button Background="LightGreen" HorizontalAlignment="left" Width="160" Content="Load file with hashes" Click="LoadHashes_Click" Margin="17,378,0,55"/>
+                        <Button Background="LightPink" HorizontalAlignment="left" Width="160" Content="Search collision" Click="SearchCollision_Click" Margin="17,415,0,18"/>
+                        <Label Content="Found" HorizontalAlignment="Left" Margin="222,387,0,0" VerticalAlignment="Top" Width="45"/>
+                        <TextBox IsReadOnly="True" x:Name="collisions_num" HorizontalAlignment="Left" Margin="268,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="55" RenderTransformOrigin="0,0.412"/>
+                        <Label Content="collisions in" HorizontalAlignment="Left" Margin="333,387,0,0" VerticalAlignment="Top" Width="84"/>
+                        <TextBox IsReadOnly="True" x:Name="hash_num" HorizontalAlignment="Left" Margin="410,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="117" RenderTransformOrigin="0,0.412"/>
+                        <Label Content="hashes." HorizontalAlignment="Left" Margin="535,387,0,0" VerticalAlignment="Top" Width="49"/>
+                        <Button Background="LightYellow" HorizontalAlignment="left" Width="160" Content="See more" Click="SeeMore_Click" Margin="601,387,0,46"/>
+                    </Grid>
+                </Viewbox>
+
+            </TabItem>
+
+            <TabItem Header="Statistics" />
+
+
+
+        </TabControl>
+
     </Grid>
 </Window>

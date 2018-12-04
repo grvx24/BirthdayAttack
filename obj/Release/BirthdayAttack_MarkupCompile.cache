@@ -4,19 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\PM\Desktop\BirthdayAttack\obj\Debug\
+C:\Users\PM\Desktop\BirthdayAttack\obj\Release\
 BirthdayAttack
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\PM\Desktop\BirthdayAttack\App.xaml
 11151548125
 
-<<<<<<< HEAD
-12-2020648878
-=======
-9-86895944
->>>>>>> 8dead8f10a61a7a364dc878a0b17fae80c1c1ad3
+5-2017746502
 131569487696
 MainWindow.xaml;
 

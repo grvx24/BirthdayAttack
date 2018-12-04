@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/BirthdayAttack/v15/Server/sqlite3/db.lock
+/.vs/BirthdayAttack/v15/Server/sqlite3/storage.ide
+/.vs/BirthdayAttack/v15/Server/sqlite3/storage.ide-shm
+/.vs/BirthdayAttack/v15/Server/sqlite3/storage.ide-wal

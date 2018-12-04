@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,41 @@ namespace BirthdayAttack
         public MainWindow()
         {
             InitializeComponent();
+        }
+        static String ReadingFromFile(String path)
+        {
+            string s = File.ReadAllText(path, Encoding.Default);
+            return s;
+        }
+
+        private void LoadMessages_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GenerateHashes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GenerateMessage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LoadHashes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchCollision_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SeeMore_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
