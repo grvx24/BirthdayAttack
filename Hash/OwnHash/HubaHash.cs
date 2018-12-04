@@ -2,8 +2,10 @@
 
 namespace BirthdayAttack.Hash.OwnHash
 {
-    class Huba : IHash
+    class HubaHash : IHash
     {
+        public string Name => "Huba";
+
         public string ShortCutMessage(string message, int shortCutSizeInBits)
         {
             throw new NotImplementedException();
