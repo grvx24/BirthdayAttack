@@ -67,6 +67,7 @@
     <Compile Include="DataGenerator.cs" />
     <Compile Include="FileFactory\FileManager.cs" />
     <Compile Include="FileFactory\LoadingFileDto.cs" />
+    <Compile Include="Hash\IHash.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="IDataGenerator.cs" />
     <Compile Include="MainWindow.xaml.cs">

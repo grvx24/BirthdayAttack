@@ -20,7 +20,6 @@ using Microsoft.Win32;
 
 namespace BirthdayAttack
 {
-
     public partial class MainWindow : Window
     {
         private byte[] loadedData;
