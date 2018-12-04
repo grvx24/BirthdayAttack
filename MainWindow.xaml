@@ -12,7 +12,7 @@
                 <Viewbox>
                     <Grid Height="458" Width="972">
 
-                        <TextBox x:Name="message_num" HorizontalAlignment="Left" Margin="17,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="165" RenderTransformOrigin="0,0.412"/>
+                        <TextBox MaxLength="6" x:Name="message_num" HorizontalAlignment="Left" Margin="17,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="165" RenderTransformOrigin="0,0.412"/>
                         <Label Content="Generate input data" HorizontalAlignment="Left" Margin="-1,5,-2,0" VerticalAlignment="Top" Width="975" Background="#FFC7B4DE"/>
                         <Label Content="Enter the number of messages" HorizontalAlignment="Left" Margin="13,64,0,0" VerticalAlignment="Top"/>
                         <Button Background="LightBlue" HorizontalAlignment="left" Width="114" Content="Generate" Click="GenerateMessage_Click" Margin="189,46,0,387"/>
@@ -23,8 +23,8 @@
                             <ListBoxItem>MD5</ListBoxItem>
                         </ListBox>
                         <Label Content="Select hash function" HorizontalAlignment="Left" Margin="12,212,0,0" VerticalAlignment="Top" Height="26"/>
-                        <Button Background="LightGreen" HorizontalAlignment="left" Width="160" Content="Load file with messages" Click="LoadMessages_Click" Margin="12,252,0,181"/>
-                        <Button Background="LightBlue" HorizontalAlignment="left" Width="157" Content="Generate" Click="GenerateHashes_Click" Margin="14,282,0,152"/>
+                        <Button Background="LightGreen" HorizontalAlignment="left" Width="151" Content="Load file with messages" Click="LoadMessages_Click" Margin="17,252,0,181"/>
+                        <Button Background="LightBlue" HorizontalAlignment="left" Width="151" Content="Generate" Click="GenerateHashes_Click" Margin="17,282,0,152"/>
                         <Label Content="Birthday attack" HorizontalAlignment="Left" Margin="-1,330,-2,0" VerticalAlignment="Top" Width="973" Background="#FFC7B4DE"/>
                         <Button Background="LightGreen" HorizontalAlignment="left" Width="160" Content="Load file with hashes" Click="LoadHashes_Click" Margin="17,378,0,55"/>
                         <Button Background="LightPink" HorizontalAlignment="left" Width="160" Content="Search collision" Click="SearchCollision_Click" Margin="17,415,0,18"/>
@@ -34,6 +34,12 @@
                         <TextBox IsReadOnly="True" x:Name="hash_num" HorizontalAlignment="Left" Margin="410,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="117" RenderTransformOrigin="0,0.412"/>
                         <Label Content="hashes." HorizontalAlignment="Left" Margin="535,387,0,0" VerticalAlignment="Top" Width="49"/>
                         <Button Background="LightYellow" HorizontalAlignment="left" Width="160" Content="See more" Click="SeeMore_Click" Margin="601,387,0,46"/>
+                        <ProgressBar Minimum="0" Maximum="100" x:Name="Generation_loading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="486" Margin="476,46,0,0"/>
+                        <Label x:Name="Loading_percents" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="426,46,0,0" RenderTransformOrigin="2.684,0.399"/>
+                        <Label Visibility="Hidden" x:Name="GeneratingData_label" Content="Generating data..." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="323,46,0,0" RenderTransformOrigin="2.684,0.399"/>
+                        <Label x:Name="fileSize_label" Content="File size: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="197,176,0,0"/>
+                        <Label x:Name="MessagesNumber_label" Content="Number of messages: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="197,207,0,0"/>
+                        <Label x:Name="fileName_label" Content="File name: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="197,145,0,0"/>
                     </Grid>
                 </Viewbox>
 
