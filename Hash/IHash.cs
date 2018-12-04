@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BirthdayAttack.Hash
 {
-    class IHash
+    interface IHash
     {
+        string ShortCutMessage(string message,int shortCutSizeInBits);
     }
 }
