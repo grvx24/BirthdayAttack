@@ -40,10 +40,10 @@ namespace BirthdayAttack
         {
             var loadedFile = FileManager.LoadMessagesFile();
             loadedData = loadedFile.LoadedData;
-            
-            fileName_label.Content = "File name: " + loadedFile.FileName;
-            fileSize_label.Content = "File size: " + loadedFile.LoadedDataLength;
-            MessagesNumber_label.Content = "Number of messages: " + loadedFile.NumberOfMessages;
+
+            fileName_label_value.Text = loadedFile.FileName;
+            fileSize_label_value.Text = loadedFile.LoadedDataLength.ToString();
+            MessagesNumber_label_value.Text = loadedFile.NumberOfMessages.ToString();
         }
 
         private void GenerateHashes_Click(object sender, RoutedEventArgs e)
@@ -53,6 +53,10 @@ namespace BirthdayAttack
                 MessageBox.Show("No file loaded!");
                 return;
             }
+            string fakeMsg = "kapitan morgan";
+            int fakeBits = 32;
+            HashManager.ShortCutMessageBySpecificFunction(fakeMsg, fakeBits, ListOfHashes.SelectedIndex);
+
         }
 
         private void GenerateMessage_Click(object sender, RoutedEventArgs e)
