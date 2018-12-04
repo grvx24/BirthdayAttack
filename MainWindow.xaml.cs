@@ -87,15 +87,11 @@ namespace BirthdayAttack
 
             Task.Run(() =>
             {
-                if (String.IsNullOrEmpty(numOfMessages))
-                {
-                    throw new ArgumentOutOfRangeException("Minimum length is 1 ");
-                }
                 var result = dg.GenerateUniqueIntegers(int.Parse(numOfMessages));
 
                 Dispatcher.Invoke(() =>
                 {
-                    FileManager.SaveFile(result);
+                    FileManager.SaveFile(result, DateTime.Now.ToString("ddMMyyyyHHmmss") + "_" + numOfMessages);
                 });
             });
         }

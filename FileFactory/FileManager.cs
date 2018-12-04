@@ -5,9 +5,10 @@ namespace BirthdayAttack.FileFactory
 {
     public static class FileManager
     {
-        public static void SaveFile(int[] result)
+        public static void SaveFile(int[] result,string fileName)
         {
             SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.FileName = fileName;
             if (fileDialog.ShowDialog() == true)
             {
                 var stream = File.Open(fileDialog.FileName, FileMode.Create);
