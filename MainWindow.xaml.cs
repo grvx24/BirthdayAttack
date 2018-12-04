@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,7 +44,13 @@ namespace BirthdayAttack
 
         private void GenerateMessage_Click(object sender, RoutedEventArgs e)
         {
+            DataGenerator dg = new DataGenerator();
+            var result=dg.GenerateUniqueIntegers(50);
 
+            foreach (var n in result)
+            {
+                Trace.WriteLine(n);
+            }
         }
 
         private void LoadHashes_Click(object sender, RoutedEventArgs e)

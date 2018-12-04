@@ -20,3 +20,11 @@ C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\BirthdayAtta
 C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\BirthdayAttack_MarkupCompile.lref
 C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\BirthdayAttack.exe
 C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\BirthdayAttack.pdb
+C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\bin\Debug\BirthdayAttack.exe.config
+C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\bin\Debug\BirthdayAttack.exe
+C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\bin\Debug\BirthdayAttack.pdb
+C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\MainWindow.baml
+C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\BirthdayAttack.g.resources
+C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\BirthdayAttack.Properties.Resources.resources
+C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\BirthdayAttack.csproj.GenerateResource.cache
+C:\Users\Kamil\source\repos\BirthdayAttack\BirthdayAttack\obj\Debug\BirthdayAttack.csproj.CoreCompileInputs.cache

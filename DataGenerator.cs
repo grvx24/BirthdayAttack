@@ -20,9 +20,11 @@ namespace BirthdayAttack
 
             int startPoint = rng.Next(int.MinValue, int.MaxValue-length);
             int[] result = new int[length];
-            for (int i = startPoint; i < length; i++)
+            int counter = 0;
+            for (int i = startPoint; i < startPoint+length; i++)
             {
-                result[i] = i;
+                result[counter] = i;
+                counter++;
             }
 
             return result;

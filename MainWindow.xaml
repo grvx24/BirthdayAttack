@@ -15,7 +15,7 @@
                         <TextBox x:Name="message_num" HorizontalAlignment="Left" Margin="17,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="165" RenderTransformOrigin="0,0.412"/>
                         <Label Content="Generate input data" HorizontalAlignment="Left" Margin="-1,5,-2,0" VerticalAlignment="Top" Width="975" Background="#FFC7B4DE"/>
                         <Label Content="Enter the number of messages" HorizontalAlignment="Left" Margin="13,64,0,0" VerticalAlignment="Top"/>
-                        <Button Background="LightBlue" HorizontalAlignment="left" Width="113" Content="Generate" Click="GenerateMessage_Click" Margin="190,45,0,389"/>
+                        <Button Background="LightBlue" HorizontalAlignment="left" Width="114" Content="Generate" Click="GenerateMessage_Click" Margin="189,46,0,387"/>
                         <Label Content="Calculate hashes" HorizontalAlignment="Left" Margin="-1,103,-6,0" VerticalAlignment="Top" Width="979" Background="#FFC7B4DE"/>
                         <ListBox Margin="13,145,804,241">
                             <ListBoxItem>Hash function #1</ListBoxItem>
