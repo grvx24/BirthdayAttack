@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BirthdayAttack.Hash
 {
-    public interface IHash
+    class ResultJsonModel
     {
-        string Name { get; }
-        string ShortCutMessage(byte[] message);
-        string ShortCutStringMessage(string message);
+        public string HexInput { get; set; }
+        public string HexHash { get; set; }
     }
 }

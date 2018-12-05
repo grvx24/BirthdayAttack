@@ -11,7 +11,8 @@ namespace BirthdayAttack.Hash
     {
         private static List<IHash> HashList = new List<IHash>()
         {
-            new HubaHash()
+            new HubaHash(),
+            new ShortMD5(4)
         };
 
         public static List<IHash> GetListOfAvailableFunctions()
@@ -19,9 +20,9 @@ namespace BirthdayAttack.Hash
             return HashList;
         }
 
-        public static string ShortCutMessageBySpecificFunction(byte[] msg,int shortCutSizeInBits, int id)
+        public static string ShortCutMessageBySpecificFunction(byte[] msg, int id)
         {
-            return HashList[id].ShortCutMessage(msg, shortCutSizeInBits);
+            return HashList[id].ShortCutMessage(msg);
         }
     }
 }

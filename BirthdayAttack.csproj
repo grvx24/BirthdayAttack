@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Hash\OwnHash\ShortMD5.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,13 +65,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CustomMd5.cs" />
     <Compile Include="DataGenerator.cs" />
     <Compile Include="FileFactory\FileManager.cs" />
     <Compile Include="FileFactory\LoadingFileDto.cs" />
     <Compile Include="Hash\HashManager.cs" />
     <Compile Include="Hash\IHash.cs" />
     <Compile Include="Hash\OwnHash\HubaHash.cs" />
+    <Compile Include="Hash\ResultJsonModel.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="IDataGenerator.cs" />
     <Compile Include="MainWindow.xaml.cs">

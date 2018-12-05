@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -53,16 +54,32 @@ namespace BirthdayAttack
                 MessageBox.Show("No file loaded!");
                 return;
             }
-            int fakeBits = 32;
 
             byte[] _4bytes = new byte[4];
             
+            ResultJsonModel[] jsonModel = new ResultJsonModel[loadedData.Length/4];
 
             for (int i = 0; i < loadedData.Length; i += 4)
             {
                 Array.Copy(loadedData, i, _4bytes, 0, 4);
-                HashManager.ShortCutMessageBySpecificFunction(_4bytes, fakeBits, ListOfHashes.SelectedIndex);
-            }           
+                var result =HashManager.ShortCutMessageBySpecificFunction(_4bytes, ListOfHashes.SelectedIndex);
+                jsonModel[i / 4] = new ResultJsonModel()
+                {
+                    HexInput = Helpers.ByteArrayToHex(_4bytes),
+                    HexHash = result
+                };
+            }
+            var serializer = new JavaScriptSerializer();
+            var jsonString=serializer.Serialize(jsonModel);
+
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            if (fileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(fileDialog.FileName, jsonString);
+            }
+
+
+
         }
 
         private void GenerateMessage_Click(object sender, RoutedEventArgs e)

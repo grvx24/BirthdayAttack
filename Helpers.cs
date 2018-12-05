@@ -9,25 +9,16 @@ namespace BirthdayAttack
 {
     class Helpers
     {
-        public static string RandomString(int length)
+        public static string ByteArrayToHex(byte[] input)
         {
-            const string valid = "abcdefghijklmnopqrstuvwxyz0123456789";
-            StringBuilder res = new StringBuilder();
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < input.Length; i++)
             {
-                byte[] uintBuffer = new byte[sizeof(uint)];
-
-                while (length-- > 0)
-                {
-                    rng.GetBytes(uintBuffer);
-                    uint num = BitConverter.ToUInt32(uintBuffer, 0);
-                    res.Append(valid[(int)(num % (uint)valid.Length)]);
-                }
+                sb.Append(input[i].ToString("x2"));
             }
 
-            return res.ToString();
+            return sb.ToString();
         }
-
 
         //zmienić ulong na biginteger!!!
         public static double CountProbability(ulong n, ulong k)
