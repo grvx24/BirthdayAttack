@@ -52,7 +52,7 @@
                         </Button>
                         <Label Content="Birthday attack" HorizontalAlignment="Left" Margin="-1,330,-2,0" VerticalAlignment="Top" Width="973" Background="#FFC7B4DE"/>
                         <Button Background="LightGreen" HorizontalAlignment="left" Width="160" Content="Load file with hashes" Click="LoadHashes_Click" Margin="17,378,0,55"/>
-                        <Button Background="LightPink" HorizontalAlignment="left" Width="160" Content="Search collision" Click="SearchCollision_Click" Margin="17,415,0,18"/>
+                        <Button x:Name="SearchCollisionBtn" IsEnabled="False" Background="LightPink" HorizontalAlignment="left" Width="160" Content="Search collision" Click="SearchCollision_Click" Margin="17,415,0,18"/>
                         <Label Content="Found" HorizontalAlignment="Left" Margin="222,387,0,0" VerticalAlignment="Top" Width="45"/>
                         <TextBox IsReadOnly="True" x:Name="collisions_num" HorizontalAlignment="Left" Margin="268,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="55" RenderTransformOrigin="0,0.412"/>
                         <Label Content="collisions in" HorizontalAlignment="Left" Margin="333,387,0,0" VerticalAlignment="Top" Width="84"/>
@@ -68,6 +68,7 @@
                         <TextBox IsReadOnly="True" x:Name="fileSize_label_value" MinWidth="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="323,176,0,0" />
                         <Label x:Name="MessagesNumber_label" Content="Number of messages: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="197,207,0,0"/>
                         <TextBox IsReadOnly="True" x:Name="MessagesNumber_label_value" MinWidth="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="323,207,0,0" />
+                        <Label  Visibility="Visible" x:Name="JsonHashesWarningLabel" Content="" HorizontalAlignment="Left" Margin="222,414,0,0" VerticalAlignment="Top" Width="539"/>
                     </Grid>
                 </Viewbox>
 

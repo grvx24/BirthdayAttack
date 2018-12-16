@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BirthdayAttack.Hash
 {
-    class ResultJsonModel
+    public class ResultJsonModel
     {
         public string HexInput { get; set; }
         public string HexHash { get; set; }
