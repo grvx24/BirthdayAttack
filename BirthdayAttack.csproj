@@ -59,6 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="BirthdayAttackManager.cs" />
     <Compile Include="Hash\CollisionModel.cs" />
+    <Compile Include="Hash\CollisionResultModel.cs" />
     <Compile Include="Hash\OwnHash\ShortMD5.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

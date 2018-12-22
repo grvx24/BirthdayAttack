@@ -17,6 +17,9 @@ namespace BirthdayAttack
         public event UpdateStep UpdateEvent;
         public event CompleteStep CompleteEvent;
 
+        public event UpdateStep SearchCollisionUpdateEvent;
+        public event CompleteStep SearchCollisionCompleteEvent;
+
         public CollisionModel FindCollision(ResultJsonModel[] loadedHashes,string filename)
         {
             Array.Sort(loadedHashes, delegate (ResultJsonModel x, ResultJsonModel y) { return x.HexHash.CompareTo(y.HexHash); });
@@ -37,6 +40,20 @@ namespace BirthdayAttack
                     if (!collisionModel.Data.Contains(loadedHashes[i+1]))
                         collisionModel.Data.Add(loadedHashes[i+1]);
                 }
+
+                if (i % 1000 == 0)
+                {
+                    if (SearchCollisionUpdateEvent != null)
+                    {
+                        SearchCollisionUpdateEvent.Invoke(i,loadedHashes.Length);
+                    }
+                }
+
+            }
+
+            if (SearchCollisionCompleteEvent != null)
+            {
+                SearchCollisionCompleteEvent.Invoke();
             }
 
             return collisionModel;

@@ -56,7 +56,7 @@ namespace BirthdayAttack.FileFactory
             return result;
         }
 
-        public static LoadingFileDto[] LoadMessagesFiles(string[] filenames)
+        public static LoadingFileDto[] LoadMessagesFiles(string[] filenames,string[] safefilenames)
         {
             LoadingFileDto[] results = null;
 
@@ -74,7 +74,7 @@ namespace BirthdayAttack.FileFactory
             for (int i = 0; i < numOfFiles; i++)
             {
                 results[i].LoadedData = File.ReadAllBytes(filenames[i]);
-                results[i].FileName = filenames[i];
+                results[i].FileName = safefilenames[i];
                 results[i].LoadedDataLength = results[i].LoadedData.Length;
                 results[i].NumberOfMessages = results[i].LoadedDataLength / sizeof(int);
             }

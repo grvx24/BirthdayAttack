@@ -41,6 +41,8 @@ namespace BirthdayAttack
         //Finding collision
         private Dictionary<string, ResultJsonModel[]> loadedHashesDict;
         private CollisionModel[] collisions;
+        private int searchedFiles;
+        private int filesToSearchCollision;
 
         private BigInteger[] messagesToBirthdayAttack;
         public MainWindow()
@@ -55,7 +57,12 @@ namespace BirthdayAttack
             birthdayAttackManager = new BirthdayAttackManager();
             birthdayAttackManager.UpdateEvent += CalculateHashesLoading;
             birthdayAttackManager.CompleteEvent += CalculateHashesComplete;
+
+            birthdayAttackManager.SearchCollisionUpdateEvent += SearchCollisionLoading;
+            birthdayAttackManager.SearchCollisionCompleteEvent += SearchCollisionComplete;
         }
+
+
 
         private void CountMessagesToBirthdatyAttack()
         {
@@ -86,7 +93,8 @@ namespace BirthdayAttack
                     LoadingFilesToHashLabel.Visibility = Visibility.Visible;
                     Task.Run(() =>
                     {
-                        loadedData = FileManager.LoadMessagesFiles(fileDialog.FileNames);
+                        
+                        loadedData = FileManager.LoadMessagesFiles(fileDialog.FileNames, fileDialog.SafeFileNames);
 
                         Dispatcher.Invoke(() =>
                         {
@@ -131,25 +139,6 @@ namespace BirthdayAttack
 
         }
 
-        private void CalculateHashesLoading(int counter, int max)
-        {
-            Dispatcher.Invoke(() =>
-            {
-                hashingDataLabel.Visibility = Visibility.Visible;
-                var percents = ((counter * 100) / max);
-                GenerateHashesLoading.Value = percents;
-                HashesLoadingPercents.Content = percents + "% " + hashedFiles + "/" + toHashFiles;
-            });
-        }
-        private void CalculateHashesComplete()
-        {
-            hashedFiles++;
-            Dispatcher.Invoke(() =>
-            {
-                hashingDataLabel.Visibility = Visibility.Hidden;
-                HashesLoadingPercents.Content = "100% " + readyFiles + "/" + numOfFiles;
-            });
-        }
 
         private void GenerateMessage_Click(object sender, RoutedEventArgs e)
         {
@@ -171,7 +160,8 @@ namespace BirthdayAttack
             readyFiles = 0;
 
             DataGenerator dg = new DataGenerator();
-            //events
+
+
             dg.UpdateEvent += (int counter, int max) =>
             {
                 Dispatcher.Invoke(() =>
@@ -189,6 +179,7 @@ namespace BirthdayAttack
                 {
                     generatingDataLabel.Visibility = Visibility.Hidden;
                     Loading_percents.Content = "100% " + readyFiles+"/"+numOfFiles;
+                    Generation_loading.Value = 100.0;
                 });
             };
 
@@ -275,10 +266,13 @@ namespace BirthdayAttack
                 {
                     SearchCollisionBtn.IsEnabled = true;
                     JsonHashesWarningLabel.Foreground = new SolidColorBrush(Colors.Green);
-                    JsonHashesWarningLabel.Content = "File has been loaded successfully, now you can search collisions!";
+                    JsonHashesWarningLabel.Content = "Files has been loaded successfully, now you can search collisions!";
                     BAttackLoadedFilesLabel.Content = numOfFiles + " files loaded.";
+                    filesToSearchCollision = numOfFiles;
                 });        
-            });  
+            });
+
+
         }
 
         private void SearchCollision_Click(object sender, RoutedEventArgs e)
@@ -293,9 +287,13 @@ namespace BirthdayAttack
             collisions = new CollisionModel[numOfFiles];
             int i = 0;
 
+            JsonHashesWarningLabel.Content = "Finding collisions...";
+
+            
             Task.Run(() =>
             {
-
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
                 foreach (var item in loadedHashesDict)
                 {
                     collisions[i] = birthdayAttackManager.FindCollision(item.Value, item.Key);
@@ -307,16 +305,15 @@ namespace BirthdayAttack
                 {
                     collisionsFound += collisions[j].Data.Count / 2;
                 }
-
+                sw.Stop();
                 Dispatcher.Invoke(() =>
                 {
                     collisions_num.Text = collisionsFound.ToString();
                     hash_num.Text = numOfFiles.ToString();
+                    searchingCollisionsTime.Text = sw.ElapsedMilliseconds + "ms";
                 });
 
             });
-
-            
 
         }
 
@@ -350,6 +347,50 @@ namespace BirthdayAttack
             }
 
             numFilesToGenerate.Text = result.ToString();
+        }
+
+
+        //events
+        private void SearchCollisionLoading(int counter, int max)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var percents = ((counter * 100) / max);
+                findCollisionLoading.Value = percents;
+                findCollisionLabel.Content = percents + "% " + searchedFiles + "/" + filesToSearchCollision;
+            });
+        }
+
+        private void SearchCollisionComplete()
+        {
+            searchedFiles++;
+            Dispatcher.Invoke(() =>
+            {
+                JsonHashesWarningLabel.Content = "";
+                findCollisionLoading.Value = 100.0;
+                findCollisionLabel.Content = 100 + "% " + searchedFiles + "/" + filesToSearchCollision;
+            });
+
+        }
+        private void CalculateHashesLoading(int counter, int max)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                hashingDataLabel.Visibility = Visibility.Visible;
+                var percents = ((counter * 100) / max);
+                GenerateHashesLoading.Value = percents;
+                HashesLoadingPercents.Content = percents + "% " + hashedFiles + "/" + toHashFiles;
+            });
+        }
+        private void CalculateHashesComplete()
+        {
+            hashedFiles++;
+            Dispatcher.Invoke(() =>
+            {
+                hashingDataLabel.Visibility = Visibility.Hidden;
+                HashesLoadingPercents.Content = "100% " + readyFiles + "/" + numOfFiles;
+                GenerateHashesLoading.Value = 100.0;
+            });
         }
 
         private void numFilesToGenerate_TextChanged(object sender, TextChangedEventArgs e)
