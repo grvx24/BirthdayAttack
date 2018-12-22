@@ -6,6 +6,8 @@ namespace BirthdayAttack.Hash.OwnHash
     {
         public string Name => "Huba";
 
+        public int HashLength { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public string ShortCutMessage(byte[] message)
         {
             throw new NotImplementedException();

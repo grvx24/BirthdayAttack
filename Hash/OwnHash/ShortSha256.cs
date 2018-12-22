@@ -4,29 +4,29 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using BirthdayAttack.Hash;
 
 namespace BirthdayAttack.Hash.OwnHash
 {
-    class ShortMD5 : IHash
+    class ShortSha256 : IHash
     {
-        public ShortMD5(int hashLengthInBytes)
+
+        public ShortSha256(int hashLengthInBytes)
         {
             if (hashLengthInBytes > 16)
             {
                 throw new ArgumentOutOfRangeException("Maximum hash length is 16 bytes!");
             }
             this.HashLength = hashLengthInBytes;
-            this.Name = "MD5_" + HashLength + "bytes";
+            this.Name = "Sha256_" + HashLength + "bytes";
         }
         public int HashLength { get; set; }
-        public string Name { get; }
+        public string Name { get;}
 
         public string ShortCutMessage(byte[] message)
         {
-            using (MD5 md5 = MD5.Create())
+            using (SHA256 sha256 = SHA256.Create())
             {
-                byte[] hash = md5.ComputeHash(message);
+                byte[] hash = sha256.ComputeHash(message);
 
                 StringBuilder sb = new StringBuilder();
 
@@ -37,7 +37,7 @@ namespace BirthdayAttack.Hash.OwnHash
 
                 return sb.ToString();
             }
-            
+
         }
 
         public string ShortCutStringMessage(string message)

@@ -12,10 +12,10 @@
                 <Viewbox>
                     <Grid Height="458" Width="972">
 
-                        <TextBox MaxLength="6" x:Name="message_num" HorizontalAlignment="Left" Margin="17,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="165" RenderTransformOrigin="0,0.412"/>
+                        <TextBox MaxLength="6" x:Name="message_num" HorizontalAlignment="Left" Margin="17,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="167" RenderTransformOrigin="0,0.412"/>
                         <Label Content="Generate input data" HorizontalAlignment="Left" Margin="-1,5,-2,0" VerticalAlignment="Top" Width="975" Background="#FFC7B4DE"/>
                         <Label Content="Enter the number of messages" HorizontalAlignment="Left" Margin="13,64,0,0" VerticalAlignment="Top"/>
-                        <Button Background="LightBlue" HorizontalAlignment="left" Width="114" Content="Generate" Click="GenerateMessage_Click" Margin="189,46,0,387">
+                        <Button Background="LightBlue" HorizontalAlignment="left" Width="78" Content="Generate" Click="GenerateMessage_Click" Margin="293,46,0,388">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Style.Triggers>
@@ -27,7 +27,7 @@
                             </Button.Style>
                         </Button>
                         <Label Content="Calculate hashes" HorizontalAlignment="Left" Margin="-1,103,-6,0" VerticalAlignment="Top" Width="979" Background="#FFC7B4DE"/>
-                        <ListBox x:Name="ListOfHashes"  Margin="13,145,804,241">
+                        <ListBox x:Name="ListOfHashes"  Margin="13,145,804,241" SelectionChanged="ListOfHashes_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Name}" />
@@ -35,40 +35,45 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                         <Label Content="Select hash function" HorizontalAlignment="Left" Margin="12,212,0,0" VerticalAlignment="Top" Height="26"/>
-                        <Button Background="LightGreen" HorizontalAlignment="left" Width="151" Content="Load file with messages" Click="LoadMessages_Click" Margin="17,252,0,181"/>
-                        <Button Background="LightBlue" HorizontalAlignment="left" Width="151" Content="Generate" Click="GenerateHashes_Click" Margin="17,282,0,152">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Text.Length, ElementName=MessagesNumber_label_value, UpdateSourceTrigger=PropertyChanged}" Value="0">
-                                            <Setter Property="IsEnabled" Value="False"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding SelectedIndex, ElementName=ListOfHashes, UpdateSourceTrigger=PropertyChanged}" Value="-1">
-                                            <Setter Property="IsEnabled" Value="False"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                        <Label Content="Birthday attack" HorizontalAlignment="Left" Margin="-1,330,-2,0" VerticalAlignment="Top" Width="973" Background="#FFC7B4DE"/>
-                        <Button Background="LightGreen" HorizontalAlignment="left" Width="160" Content="Load file with hashes" Click="LoadHashes_Click" Margin="17,378,0,55"/>
+                        <Button Background="LightGreen" HorizontalAlignment="left" Width="151" Content="Load files with messages" Click="LoadMessages_Click" Margin="17,252,0,181"/>
+                        <Button x:Name="GenerateHashesBtn" IsEnabled="False" Background="LightBlue" HorizontalAlignment="left" Width="151" Content="Generate" Click="GenerateHashes_Click" Margin="17,282,0,152"/>
+                        <Label Content="Birthday attack" HorizontalAlignment="Left" Margin="5,336,-6,0" VerticalAlignment="Top" Width="973" Background="#FFC7B4DE"/>
+                        <Button Background="LightGreen" HorizontalAlignment="left" Width="160" Content="Load files with hashes" Click="LoadHashes_Click" Margin="17,378,0,55"/>
                         <Button x:Name="SearchCollisionBtn" IsEnabled="False" Background="LightPink" HorizontalAlignment="left" Width="160" Content="Search collision" Click="SearchCollision_Click" Margin="17,415,0,18"/>
-                        <Label Content="Found" HorizontalAlignment="Left" Margin="222,387,0,0" VerticalAlignment="Top" Width="45"/>
-                        <TextBox IsReadOnly="True" x:Name="collisions_num" HorizontalAlignment="Left" Margin="268,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="55" RenderTransformOrigin="0,0.412"/>
-                        <Label Content="collisions in" HorizontalAlignment="Left" Margin="333,387,0,0" VerticalAlignment="Top" Width="84"/>
-                        <TextBox IsReadOnly="True" x:Name="hash_num" HorizontalAlignment="Left" Margin="410,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="117" RenderTransformOrigin="0,0.412"/>
-                        <Label Content="hashes." HorizontalAlignment="Left" Margin="535,387,0,0" VerticalAlignment="Top" Width="49"/>
-                        <Button Background="LightYellow" HorizontalAlignment="left" Width="160" Content="See more" Click="SeeMore_Click" Margin="601,387,0,46"/>
-                        <ProgressBar Minimum="0" Maximum="100" x:Name="Generation_loading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="639" Margin="323,46,0,0"/>
-                        <Label x:Name="Loading_percents" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="601,44,0,0" RenderTransformOrigin="2.684,0.399"/>
-                        <Label Visibility="Hidden" x:Name="GeneratingData_label" Content="Generating data..." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="323,46,0,0" RenderTransformOrigin="2.684,0.399"/>
-                        <Label x:Name="fileName_label" Content="File name: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="256,145,0,0"/>
-                        <TextBox IsReadOnly="True" x:Name="fileName_label_value" MinWidth="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="323,145,0,0" />
-                        <Label  x:Name="fileSize_label" Content="File size: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="266,176,0,0"/>
-                        <TextBox IsReadOnly="True" x:Name="fileSize_label_value" MinWidth="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="323,176,0,0" />
-                        <Label x:Name="MessagesNumber_label" Content="Number of messages: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="197,207,0,0"/>
-                        <TextBox IsReadOnly="True" x:Name="MessagesNumber_label_value" MinWidth="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="323,207,0,0" />
-                        <Label  Visibility="Visible" x:Name="JsonHashesWarningLabel" Content="" HorizontalAlignment="Left" Margin="222,414,0,0" VerticalAlignment="Top" Width="539"/>
+                        <Label Content="Found" HorizontalAlignment="Left" Margin="327,377,0,0" VerticalAlignment="Top" Width="45"/>
+                        <TextBox IsReadOnly="True" x:Name="collisions_num" HorizontalAlignment="Left" Margin="373,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="55" RenderTransformOrigin="0,0.412"/>
+                        <Label Content="collisions in" HorizontalAlignment="Left" Margin="438,377,0,0" VerticalAlignment="Top" Width="72"/>
+                        <TextBox IsReadOnly="True" x:Name="hash_num" HorizontalAlignment="Left" Margin="515,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="56" RenderTransformOrigin="0,0.412"/>
+                        <Label Content="files." HorizontalAlignment="Left" Margin="576,375,0,0" VerticalAlignment="Top" Width="49"/>
+                        <Button FontWeight="Bold" Background="Orange" HorizontalAlignment="left" Width="242" Content="See more" Click="SeeMore_Click" Margin="677,377,0,56"/>
+                        <ProgressBar Minimum="0" Maximum="100" x:Name="Generation_loading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="461" Margin="501,46,0,0"/>
+
+                        <Label x:Name="Loading_percents" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="706,46,0,0" RenderTransformOrigin="2.684,0.399"/>
+                        <Label Visibility="Visible" x:Name="JsonHashesWarningLabel" Content="" HorizontalAlignment="Left" Margin="203,414,0,0" VerticalAlignment="Top" Width="407"/>
+                        <TextBox MaxLength="2" x:Name="numFilesToGenerate" HorizontalAlignment="Left" Margin="222,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="45" RenderTransformOrigin="0,0.412" Text="1" TextChanged="numFilesToGenerate_TextChanged"/>
+                        <Label Content="Number of files" HorizontalAlignment="Left" Margin="197,64,0,0" VerticalAlignment="Top" Width="94"/>
+                        <Button x:Name="plusBtn" Background="LimeGreen" HorizontalAlignment="left" Width="19" Content="+" Margin="267,46,0,388" Click="plusBtn_Click"/>
+                        <Button x:Name="minusBtn" Background="Red" HorizontalAlignment="left" Width="19" Content="-" Margin="203,46,0,388" Click="minusBtn_Click"/>
+                        <DataGrid CanUserResizeColumns="False" x:Name="FilesGrid" ItemsSource="{Binding Source=loadedData}"  AutoGenerateColumns="False" HorizontalAlignment="Left" Height="186" VerticalAlignment="Top" Width="279" Margin="203,145,0,0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="auto" Header="Filename" Binding="{Binding FileName}"/>
+                                <DataGridTextColumn Width="auto" Header="Data length" Binding="{Binding LoadedDataLength}"/>
+                                <DataGridTextColumn Width="*" Header="Number of messages" Binding="{Binding NumberOfMessages}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Label x:Name="BAttackLoadedFilesLabel" Content="No files loaded." HorizontalAlignment="Left" Margin="203,377,0,0" VerticalAlignment="Top" Width="101"/>
+                        <ProgressBar Minimum="0" Maximum="100" x:Name="GenerateHashesLoading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="340" Margin="622,145,0,0"/>
+                        <Label x:Name="HashesLoadingPercents" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="765,145,0,0" RenderTransformOrigin="2.684,0.399"/>
+                        <Label x:Name="generationTimeLabel" Content="Elapsed time" HorizontalAlignment="Left" Margin="387,64,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
+                        <TextBox IsReadOnly="True" MaxLength="2" x:Name="generationTimeText" HorizontalAlignment="Left" Margin="387,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="109" RenderTransformOrigin="0,0.412" Text="0ms" TextChanged="numFilesToGenerate_TextChanged"/>
+                        <Label x:Name="GenerationTime" Content="Elapsed time" HorizontalAlignment="Left" Margin="501,169,0,0" VerticalAlignment="Top" Width="109" Height="28"/>
+                        <TextBox IsReadOnly="True" MaxLength="2" x:Name="generationHashTime" HorizontalAlignment="Left" Margin="501,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="109" RenderTransformOrigin="0,0.412" Text="0ms" TextChanged="numFilesToGenerate_TextChanged"/>
+                        <Label Visibility="Hidden" x:Name="generatingDataLabel" Content="Generating data..." HorizontalAlignment="Left" Margin="501,64,0,0" VerticalAlignment="Top" Width="117" Height="26"/>
+                        <Label Visibility="Hidden" x:Name="hashingDataLabel" Content="Hashing data..." HorizontalAlignment="Left" Margin="622,169,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
+                        <Label Visibility="Hidden" x:Name="LoadingFilesToHashLabel" Content="Loading files..." HorizontalAlignment="Left" Margin="17,305,0,0" VerticalAlignment="Top" Width="101"/>
+                        <ProgressBar Minimum="0" Maximum="100" x:Name="findCollisionLoading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="340" Margin="622,416,0,0"/>
+                        <Label x:Name="findCollisionLabel" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="765,416,0,0" RenderTransformOrigin="2.684,0.399"/>
+                        <Label x:Name="HashDescriptionLabel" Content="Hash description + minimum number of messages to achieve 50% probability&#xD;&#xA;of collision" HorizontalAlignment="Left" Margin="501,212,0,0" VerticalAlignment="Top" Width="446" Height="119"/>
                     </Grid>
                 </Viewbox>
 

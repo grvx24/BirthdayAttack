@@ -24,6 +24,22 @@ namespace BirthdayAttack.FileFactory
             }
         }
 
+        public static void SaveFiles(int[][] result, string fileName)
+        {
+            for (int i = 0; i < result.Length; i++)
+            {
+                var stream = File.Open(fileName + "_" + i, FileMode.Create);
+                using (BinaryWriter bw = new BinaryWriter(stream))
+                {
+                    for (int j = 0; j < result[i].Length; j++)
+                    {
+                        bw.Write(result[i][j]);
+                    }
+                }
+            }
+
+        }
+
         public static LoadingFileDto LoadMessagesFile()
         {
             LoadingFileDto result = new LoadingFileDto();
@@ -38,6 +54,31 @@ namespace BirthdayAttack.FileFactory
             }
 
             return result;
+        }
+
+        public static LoadingFileDto[] LoadMessagesFiles(string[] filenames)
+        {
+            LoadingFileDto[] results = null;
+
+            var numOfFiles = filenames.Length;
+            if (numOfFiles == 0)
+            {
+                return null;
+            }
+
+            results = new LoadingFileDto[numOfFiles];
+            for (int i = 0; i < results.Length; i++)
+            {
+                results[i] = new LoadingFileDto();
+            }
+            for (int i = 0; i < numOfFiles; i++)
+            {
+                results[i].LoadedData = File.ReadAllBytes(filenames[i]);
+                results[i].FileName = filenames[i];
+                results[i].LoadedDataLength = results[i].LoadedData.Length;
+                results[i].NumberOfMessages = results[i].LoadedDataLength / sizeof(int);
+            }
+            return results;
         }
 
     }

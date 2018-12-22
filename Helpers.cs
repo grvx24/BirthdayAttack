@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace BirthdayAttack
         }
 
         //zmienić ulong na biginteger!!!
-        public static double CountProbability(ulong n, ulong k)
+        private static double CountProbability(BigInteger n, BigInteger k)
         {
             if (n <= 0 || k <= 0)
             {
@@ -39,6 +40,24 @@ namespace BirthdayAttack
             }
 
             return 1 - result;
+        }
+
+        public static BigInteger CountBirthdayMessages(int hashLengthInBits)
+        {
+            BigInteger allMessages = BigInteger.Pow(2, hashLengthInBits);
+            BigInteger allMessages_half = BigInteger.Pow(2, hashLengthInBits/2);
+            BigInteger numOfMessages = 0;
+            for (var i = allMessages_half; i < allMessages; i++)
+            {
+                var probability=CountProbability(i, allMessages);
+                if (probability >= 0.5)
+                {
+                    numOfMessages = i;
+                    break;
+                }
+            }
+
+            return numOfMessages;
         }
     }
 }

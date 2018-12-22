@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +57,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BirthdayAttackManager.cs" />
+    <Compile Include="Hash\CollisionModel.cs" />
     <Compile Include="Hash\OwnHash\ShortMD5.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +74,7 @@
     <Compile Include="Hash\HashManager.cs" />
     <Compile Include="Hash\IHash.cs" />
     <Compile Include="Hash\OwnHash\HubaHash.cs" />
+    <Compile Include="Hash\OwnHash\ShortSha256.cs" />
     <Compile Include="Hash\ResultJsonModel.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="IDataGenerator.cs" />

@@ -5,6 +5,9 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using BirthdayAttack.FileFactory;
+using System.Web.Script.Serialization;
+using System.IO;
 
 namespace BirthdayAttack.Hash
 {
@@ -12,8 +15,10 @@ namespace BirthdayAttack.Hash
     {
         private static List<IHash> HashList = new List<IHash>()
         {
-            new HubaHash(),
-            new ShortMD5(4)
+            new ShortSha256(4),
+            new ShortSha256(6),
+            new ShortMD5(4),
+            new ShortMD5(6)
         };
 
         public static List<IHash> GetListOfAvailableFunctions()
@@ -25,21 +30,6 @@ namespace BirthdayAttack.Hash
         {
             return HashList[id].ShortCutMessage(msg);
         }
-
-        public static Dictionary<ResultJsonModel, ResultJsonModel> FindCollision(ResultJsonModel[] loadedHashes)
-        {
-            Array.Sort(loadedHashes, delegate (ResultJsonModel x, ResultJsonModel y) { return x.HexHash.CompareTo(y.HexHash); });
-
-            Dictionary<ResultJsonModel, ResultJsonModel> collisionList = new Dictionary<ResultJsonModel, ResultJsonModel>();
-            for (int i = 0; i < loadedHashes.Length - 1; i++)
-            {
-                if (loadedHashes[i].HexHash == loadedHashes[i + 1].HexHash)
-                {
-                    collisionList.Add(loadedHashes[i], loadedHashes[i + 1]);
-                }
-            }
-
-            return collisionList;
-        }
+        
     }
 }
