@@ -11,6 +11,5 @@ namespace BirthdayAttack.Hash
         string Name { get; }
         int HashLength { get; set; }
         string ShortCutMessage(byte[] message);
-        string ShortCutStringMessage(string message);
     }
 }

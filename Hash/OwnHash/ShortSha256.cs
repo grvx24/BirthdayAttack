@@ -14,9 +14,10 @@ namespace BirthdayAttack.Hash.OwnHash
             }
             this.HashLength = hashLengthInBytes;
             this.Name = "Sha256_" + HashLength + "bytes";
+            
         }
         public int HashLength { get; set; }
-        public string Name { get;}
+        public string Name { get; }
 
         public string ShortCutMessage(byte[] message)
         {
@@ -34,11 +35,6 @@ namespace BirthdayAttack.Hash.OwnHash
                 return sb.ToString();
             }
 
-        }
-
-        public string ShortCutStringMessage(string message)
-        {
-            throw new NotImplementedException();
         }
     }
 }

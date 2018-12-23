@@ -45,6 +45,11 @@ namespace BirthdayAttack
         //not used - it's too slow
         public static BigInteger CountBirthdayMessages(int hashLengthInBits)
         {
+            if(hashLengthInBits>32)
+            {
+                throw new ArgumentOutOfRangeException("Do not use values above 32, calculation is too slow!!!");
+            }
+            
             BigInteger allMessages = BigInteger.Pow(2, hashLengthInBits);
             BigInteger allMessages_half = BigInteger.Pow(2, hashLengthInBits/2);
             BigInteger numOfMessages = 0;

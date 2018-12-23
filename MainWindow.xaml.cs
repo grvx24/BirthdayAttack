@@ -431,17 +431,17 @@ namespace BirthdayAttack
             {
                 case "Paulina":
                     {
-                        PaulinaLabel.Text = "Paulina Mrozek";
+                        PaulinaLabel.Text = "Paulina \nMrozek";
                         break;
                     }
                 case "Kamil":
                     {
-                        KamilLabel.Text = "Kamil Sagalara";
+                        KamilLabel.Text = "Kamil \nSagalara";
                         break;
                     }
                 case "Hubert":
                     {
-                        HubertLabel.Text = "Hubert Springer";
+                        HubertLabel.Text = "Hubert \nSpringer";
                         break;
                     }
 
@@ -488,11 +488,5 @@ namespace BirthdayAttack
                     }
             }
         }
-
-        private void numFilesToGenerate_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
     }
 }

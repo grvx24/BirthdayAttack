@@ -73,7 +73,7 @@
                         <ProgressBar Minimum="0" Maximum="100" x:Name="Generation_loading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="461" Margin="501,46,0,0"/>
                         <Label x:Name="Loading_percents" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="706,46,0,0" RenderTransformOrigin="2.684,0.399"/>
                         <Label Visibility="Visible" x:Name="JsonHashesWarningLabel" Content="" HorizontalAlignment="Left" Margin="203,414,0,0" VerticalAlignment="Top" Width="414"/>
-                        <TextBox MaxLength="2" x:Name="numFilesToGenerate" HorizontalAlignment="Left" Margin="222,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="45" RenderTransformOrigin="0,0.412" Text="1" TextChanged="numFilesToGenerate_TextChanged"/>
+                        <TextBox MaxLength="2" x:Name="numFilesToGenerate" HorizontalAlignment="Left" Margin="222,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="45" RenderTransformOrigin="0,0.412" Text="1"/>
                         <Label Content="Number of files" HorizontalAlignment="Left" Margin="197,64,0,0" VerticalAlignment="Top" Width="94"/>
                         <Button x:Name="plusBtn" Background="LimeGreen" HorizontalAlignment="left" Width="19" Content="+" Margin="267,46,0,388" Click="plusBtn_Click"/>
                         <Button x:Name="minusBtn" Background="Red" HorizontalAlignment="left" Width="19" Content="-" Margin="203,46,0,388" Click="minusBtn_Click"/>
@@ -88,17 +88,17 @@
                         <ProgressBar Minimum="0" Maximum="100" x:Name="GenerateHashesLoading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="340" Margin="622,145,0,0"/>
                         <Label x:Name="HashesLoadingPercents" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="765,145,0,0" RenderTransformOrigin="2.684,0.399"/>
                         <Label x:Name="generationTimeLabel" Content="Elapsed time" HorizontalAlignment="Left" Margin="387,64,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
-                        <TextBox IsReadOnly="True" MaxLength="2" x:Name="generationTimeText" HorizontalAlignment="Left" Margin="387,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="109" RenderTransformOrigin="0,0.412" Text="0ms" TextChanged="numFilesToGenerate_TextChanged"/>
+                        <TextBox IsReadOnly="True" MaxLength="2" x:Name="generationTimeText" HorizontalAlignment="Left" Margin="387,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="109" RenderTransformOrigin="0,0.412" Text="0ms" />
                         <Label x:Name="GenerationTime" Content="Elapsed time" HorizontalAlignment="Left" Margin="501,169,0,0" VerticalAlignment="Top" Width="109" Height="28"/>
-                        <TextBox IsReadOnly="True" MaxLength="2" x:Name="generationHashTime" HorizontalAlignment="Left" Margin="501,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="109" RenderTransformOrigin="0,0.412" Text="0ms" TextChanged="numFilesToGenerate_TextChanged"/>
+                        <TextBox IsReadOnly="True" MaxLength="2" x:Name="generationHashTime" HorizontalAlignment="Left" Margin="501,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="109" RenderTransformOrigin="0,0.412" Text="0ms"/>
                         <Label Visibility="Hidden" x:Name="generatingDataLabel" Content="Generating data..." HorizontalAlignment="Left" Margin="501,64,0,0" VerticalAlignment="Top" Width="117" Height="26"/>
                         <Label Visibility="Hidden" x:Name="hashingDataLabel" Content="Hashing data..." HorizontalAlignment="Left" Margin="622,169,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
                         <Label Visibility="Hidden" x:Name="LoadingFilesToHashLabel" Content="Loading files..." HorizontalAlignment="Left" Margin="17,305,0,0" VerticalAlignment="Top" Width="101"/>
                         <ProgressBar Minimum="0" Maximum="100" x:Name="findCollisionLoading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="340" Margin="622,416,0,0"/>
                         <Label x:Name="findCollisionLabel" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="765,416,0,0" RenderTransformOrigin="2.684,0.399"/>
-                        <TextBox IsReadOnly="True" MaxLength="2" x:Name="searchingCollisionsTime" HorizontalAlignment="Left" Margin="878,379,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="84" RenderTransformOrigin="0,0.412" Text="0ms" TextChanged="numFilesToGenerate_TextChanged"/>
+                        <TextBox IsReadOnly="True" MaxLength="2" x:Name="searchingCollisionsTime" HorizontalAlignment="Left" Margin="878,379,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="84" RenderTransformOrigin="0,0.412" Text="0ms"/>
                         <Label Content="Elapsed time" HorizontalAlignment="Left" Margin="796,377,0,0" VerticalAlignment="Top" Width="77" Height="28"/>
-                        <TextBlock x:Name="HashDescription" Background="LightYellow" FontSize="20" FontFamily="Verdana" Margin="501,200,202,127"/>
+                        <TextBlock x:Name="HashDescription" Background="LightYellow" FontSize="14" FontFamily="Verdana" Margin="501,200,202,127"><Run Text="Recommended number of messages:"/><LineBreak/><Run Text=""/><LineBreak/><Run Text="1 byte - 20 messages"/><LineBreak/><Run Text="2 bytes - 302 messages"/><LineBreak/><Run Text="4 bytes - 77164 messages"/><LineBreak/><Run/></TextBlock>
                     </Grid>
                 </Viewbox>
 
@@ -160,7 +160,7 @@
                                 </Style>
                             </Image.Style>
                         </Image>
-                        <TextBlock x:Name="PaulinaLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="10,243,703,36">4b50d6210fde8f98b57800f469d0f185538e1419e287b339956407f86cd75bac</TextBlock>
+                        <TextBlock x:Name="PaulinaLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="10,243,703,36" Width="259">4b50d6210fde8f98b57800f469d0f185538e1419e287b339956407f86cd75bac</TextBlock>
                         <Image x:Name="Kamil" MouseEnter="ImageMouseEnter_event" MouseLeave="ImageMouseLeave_event" Margin="351,10,362,220">
                             <Image.Style>
                                 <Style TargetType="{x:Type Image}">
@@ -173,7 +173,7 @@
                                 </Style>
                             </Image.Style>
                         </Image>
-                        <TextBlock x:Name="KamilLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="351,243,362,36" Text="15ce329305b63521d7149c50457ef7c79fb2e7675dfbcc9c436a63ed0d3f7a00"/>
+                        <TextBlock x:Name="KamilLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="351,243,362,36" Text="15ce329305b63521d7149c50457ef7c79fb2e7675dfbcc9c436a63ed0d3f7a00" Width="259"/>
                         <Image x:Name="Hubert" MouseEnter="ImageMouseEnter_event" MouseLeave="ImageMouseLeave_event" Margin="703,10,10,220">
                             <Image.Style>
                                 <Style TargetType="{x:Type Image}">
@@ -186,7 +186,7 @@
                                 </Style>
                             </Image.Style>
                         </Image>
-                        <TextBlock x:Name="HubertLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="703,243,10,36" Text="26f9762a8e6a78caf319db200ff42f325018b1f5b31f6dcb59b789d16e481ffe"/>
+                        <TextBlock x:Name="HubertLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="703,243,10,36" Text="26f9762a8e6a78caf319db200ff42f325018b1f5b31f6dcb59b789d16e481ffe" Width="259"/>
                     </Grid>
                 </Viewbox>
             </TabItem>

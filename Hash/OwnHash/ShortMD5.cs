@@ -36,9 +36,5 @@ namespace BirthdayAttack.Hash.OwnHash
             
         }
 
-        public string ShortCutStringMessage(string message)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
