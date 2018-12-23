@@ -198,9 +198,10 @@ namespace BirthdayAttack
                     Stopwatch sw = new Stopwatch();
                     sw.Start();
                     int[][] results = new int[numOfFiles][];
+                    Random rng = new Random();
                     for (int i = 0; i < results.Length; i++)
                     {
-                        results[i] = dg.GenerateUniqueIntegers(int.Parse(numOfMessages));
+                        results[i] = dg.GenerateUniqueIntegers(int.Parse(numOfMessages), rng);
                     }
                     FileManager.SaveFiles(results, fileName);
                     sw.Stop();
@@ -277,6 +278,8 @@ namespace BirthdayAttack
 
         }
 
+        private IEnumerable<CollisionModel> filesWithCollision;
+
         private void SearchCollision_Click(object sender, RoutedEventArgs e)
         {
             if (loadedHashesDict.Count == 0)
@@ -292,6 +295,8 @@ namespace BirthdayAttack
 
             JsonHashesWarningLabel.Content = "Finding collisions...";
 
+            Button btn = sender as Button;
+            btn.IsEnabled = false;
             
             Task.Run(() =>
             {
@@ -317,10 +322,16 @@ namespace BirthdayAttack
                     hash_num.Text = numOfFiles.ToString();
                     searchingCollisionsTime.Text = sw.ElapsedMilliseconds + "ms";
 
+                    double successPercent = Math.Floor(100.0 * (collisionsFound / (double)numOfFiles));
+                    StatisticsLabel.Text = collisionsFound + "/" + numOfFiles + " collisions";
+                    StatisticsLabelPercents.Text = successPercent + "%";
+
                     if (collisionsFound > 0)
                     {
-                        var filesWithCollision = collisions.Where(item => item.HasCollision == true);
+                        filesWithCollision = collisions.Where(item => item.HasCollision == true);
                         FilesWithCollision.ItemsSource = filesWithCollision;
+                        FilesWithCollision.SelectedIndex = 0;
+
                     }
                 });
 
@@ -411,6 +422,7 @@ namespace BirthdayAttack
             if (item != null)
             {
                 CollisionsTable.ItemsSource = item.Data.ToArray();
+                RowsInfo.Text = item.Data.Count+ " rows in "+item.Filename +" file";
             }
 
         }
@@ -487,6 +499,35 @@ namespace BirthdayAttack
                         return;
                     }
             }
+        }
+
+        private void CollisionsSaveToFileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(filesWithCollision == null)
+            {
+                MessageBox.Show("No files found!");
+                return;
+            }
+
+            string filename;
+            SaveFileDialog fileDialog = new SaveFileDialog();
+
+            if (fileDialog.ShowDialog() == true)
+            {
+                filename = fileDialog.FileName;
+                if (filename != null)
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    Task.Run(() =>
+                    {
+                        foreach (var item in filesWithCollision)
+                        {
+                            var json = serializer.Serialize(item.Data.ToArray());
+                            File.AppendAllText(filename, json);
+                        }
+                    });
+                }
+            } 
         }
     }
 }

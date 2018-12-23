@@ -14,14 +14,13 @@ namespace BirthdayAttack
         public event UpdateStep UpdateEvent;
         public event CompleteStep CompleteEvent;
 
-        public int[] GenerateUniqueIntegers(int length)
+        public int[] GenerateUniqueIntegers(int length,Random rng)
         {
             if (length > Int32.MaxValue / 2)
             {
                 throw new ArgumentOutOfRangeException("Maximum length is: "+Int32.MaxValue/2);
             }
 
-            Random rng = new Random();
 
             int startPoint = rng.Next(int.MinValue, int.MaxValue-length);
             int endPoint = startPoint + length;

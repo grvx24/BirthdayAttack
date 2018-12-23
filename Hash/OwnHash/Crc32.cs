@@ -136,7 +136,6 @@ namespace BirthdayAttack.Hash.OwnHash
                 sb.Append(hash[i].ToString("x2"));
             }
 
-            Dispose();
             return sb.ToString();
         }
 

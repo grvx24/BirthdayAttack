@@ -121,9 +121,14 @@
                                     <TextBlock Text="{Binding Filename}"></TextBlock>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
+
                         </ListBox>
                         <Label  Content="Files with collision" Margin="304,36,563,396"/>
-                        <Image Source="statIcon.png" Margin="649,193,10,0"></Image>
+                        <Image Source="statIcon.png" Margin="692,188,10,0"></Image>
+                        <TextBlock TextAlignment="Center" x:Name="StatisticsLabel" FontSize="32" Margin="304,348,280,61" Text="0/0 collisions"/>
+                        <TextBlock TextAlignment="Center" x:Name="StatisticsLabelPercents" FontSize="32" Margin="304,397,280,10" Text="0%"/>
+                        <Button x:Name="CollisionsSaveToFileBtn" Background="LightGreen" Content="Save as JSON file" Margin="304,193,523,224" Click="CollisionsSaveToFileBtn_Click"/>
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Left" x:Name="RowsInfo" FontSize="32" Margin="304,239,280,110" Text="0 rows"/>
                     </Grid>
                 </Viewbox>
             </TabItem>

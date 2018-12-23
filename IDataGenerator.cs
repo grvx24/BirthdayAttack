@@ -8,6 +8,6 @@ namespace BirthdayAttack
 {
     interface IDataGenerator
     {
-        int[] GenerateUniqueIntegers(int length);
+        int[] GenerateUniqueIntegers(int length,Random random);
     }
 }
