@@ -137,5 +137,8 @@
     <Resource Include="nosaczk.jpg" />
     <Resource Include="nosaczp.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="nosacz.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

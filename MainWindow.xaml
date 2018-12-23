@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BirthdayAttack"
         mc:Ignorable="d"
-      Title="Birthday attack simulator 2019" Height="600" Width="1100">
+      Title="Birthday attack simulator 2019" Icon="nosacz.ico" Height="600" Width="1100">
     <Grid>
         <TabControl x:Name="tabItems">
             <TabItem Header="Main page">
