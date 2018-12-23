@@ -220,9 +220,11 @@ namespace BirthdayAttack
             fileDialog.Multiselect = true;
 
             string[] filenames = null;
+            string[] safefilenames = null;
             if (fileDialog.ShowDialog() == true)
             {
                 filenames = fileDialog.FileNames;
+                safefilenames = fileDialog.SafeFileNames;
             }
 
             if (filenames == null)
@@ -250,7 +252,7 @@ namespace BirthdayAttack
                     try
                     {
                         var hashesFromJson= serializer.Deserialize<ResultJsonModel[]>(jsonString);
-                        loadedHashesDict.Add(filenames[i],hashesFromJson);
+                        loadedHashesDict.Add(safefilenames[i],hashesFromJson);
                     }
                     catch (Exception)
                     {
@@ -284,6 +286,7 @@ namespace BirthdayAttack
 
             int numOfFiles = loadedHashesDict.Count;
 
+            searchedFiles = 0;
             collisions = new CollisionModel[numOfFiles];
             int i = 0;
 
@@ -303,7 +306,9 @@ namespace BirthdayAttack
                 int collisionsFound = 0;
                 for (int j = 0; j < collisions.Length; j++)
                 {
-                    collisionsFound += collisions[j].Data.Count / 2;
+                    if (collisions[j].HasCollision)
+                        collisionsFound++;
+
                 }
                 sw.Stop();
                 Dispatcher.Invoke(() =>
@@ -311,6 +316,12 @@ namespace BirthdayAttack
                     collisions_num.Text = collisionsFound.ToString();
                     hash_num.Text = numOfFiles.ToString();
                     searchingCollisionsTime.Text = sw.ElapsedMilliseconds + "ms";
+
+                    if (collisionsFound > 0)
+                    {
+                        var filesWithCollision = collisions.Where(item => item.HasCollision == true);
+                        FilesWithCollision.ItemsSource = filesWithCollision;
+                    }
                 });
 
             });
@@ -319,7 +330,7 @@ namespace BirthdayAttack
 
         private void SeeMore_Click(object sender, RoutedEventArgs e)
         {
-
+            tabItems.SelectedIndex = 2;
         }
 
         private void ListOfHashes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -388,14 +399,100 @@ namespace BirthdayAttack
             Dispatcher.Invoke(() =>
             {
                 hashingDataLabel.Visibility = Visibility.Hidden;
-                HashesLoadingPercents.Content = "100% " + readyFiles + "/" + numOfFiles;
+                HashesLoadingPercents.Content = "100% " + hashedFiles + "/" + toHashFiles;
                 GenerateHashesLoading.Value = 100.0;
             });
+        }
+
+        private void FilesWithCollision_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listbox = sender as ListBox;
+            var item = listbox.SelectedItem as CollisionModel;
+            if (item != null)
+            {
+                CollisionsTable.ItemsSource = item.Data.ToArray();
+            }
+
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+
+        private void ImageMouseEnter_event(object sender, MouseEventArgs e)
+        {
+
+            Image img = sender as Image;
+
+            switch (img.Name)
+            {
+                case "Paulina":
+                    {
+                        PaulinaLabel.Text = "Paulina Mrozek";
+                        break;
+                    }
+                case "Kamil":
+                    {
+                        KamilLabel.Text = "Kamil Sagalara";
+                        break;
+                    }
+                case "Hubert":
+                    {
+                        HubertLabel.Text = "Hubert Springer";
+                        break;
+                    }
+
+                default:
+                    {
+                        return;
+                    }
+            }
+            
+        }
+
+        private void ImageMouseLeave_event(object sender, MouseEventArgs e)
+        {
+            string[] hashes =
+{
+                "4b50d6210fde8f98b57800f469d0f185538e1419e287b339956407f86cd75bac",
+                "15ce329305b63521d7149c50457ef7c79fb2e7675dfbcc9c436a63ed0d3f7a00",
+                "26f9762a8e6a78caf319db200ff42f325018b1f5b31f6dcb59b789d16e481ffe"
+            };
+
+            Image img = sender as Image;
+
+            switch (img.Name)
+            {
+                case "Paulina":
+                    {
+                        PaulinaLabel.Text = hashes[0];
+                        break;
+                    }
+                case "Kamil":
+                    {
+                        KamilLabel.Text = hashes[1];
+                        break;
+                    }
+                case "Hubert":
+                    {
+                        HubertLabel.Text = hashes[2];
+                        break;
+                    }
+
+                default:
+                    {
+                        return;
+                    }
+            }
         }
 
         private void numFilesToGenerate_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
+
     }
 }

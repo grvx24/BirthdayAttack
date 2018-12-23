@@ -21,7 +21,7 @@ namespace BirthdayAttack
             return sb.ToString();
         }
 
-        //zmienić ulong na biginteger!!!
+        //not used!!!
         private static double CountProbability(BigInteger n, BigInteger k)
         {
             if (n <= 0 || k <= 0)
@@ -42,6 +42,7 @@ namespace BirthdayAttack
             return 1 - result;
         }
 
+        //not used - it's too slow
         public static BigInteger CountBirthdayMessages(int hashLengthInBits)
         {
             BigInteger allMessages = BigInteger.Pow(2, hashLengthInBits);

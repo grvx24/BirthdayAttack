@@ -8,10 +8,34 @@
       Title="MainWindow" Height="600" Width="1100">
     <Grid>
         <TabControl x:Name="tabItems">
+            <TabItem Header="Main page">
+                <Viewbox>
+                    <Grid Height="458" Width="972">
+                        <TextBlock FontSize="50" FontWeight="Bold" FontFamily="Arial" Margin="10,10,199,381"><Run Text="Birt"/><Run Text="h"/><Run Text="day attack simulator"/><Run Text=" 2019"/></TextBlock>
+                        <Image Source="PP.jpg" Margin="644,148,10,10"></Image>
+                        <Image Source="cake.png" Margin="801,0,54,348"/>
+                        <Button Background="LightBlue" Margin="10,97,833,316">
+                            <TextBlock FontSize="20" FontFamily="Arial">Theory</TextBlock>
+                        </Button>
+                        <Button Background="LightGreen" Margin="163,97,680,316">
+                            <TextBlock FontSize="20" FontFamily="Arial" Text="Instructions"/>
+                        </Button>
+                    </Grid>
+                </Viewbox>
+            </TabItem>
             <TabItem Header="Birthday">
                 <Viewbox>
                     <Grid Height="458" Width="972">
-
+                        <Image Source="HashIcon.png" Margin="765,177,10,130" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleY="-0.325"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="-0.442"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
                         <TextBox MaxLength="6" x:Name="message_num" HorizontalAlignment="Left" Margin="17,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="167" RenderTransformOrigin="0,0.412"/>
                         <Label Content="Generate input data" HorizontalAlignment="Left" Margin="-1,5,-2,0" VerticalAlignment="Top" Width="975" Background="#FFC7B4DE"/>
                         <Label Content="Enter the number of messages" HorizontalAlignment="Left" Margin="13,64,0,0" VerticalAlignment="Top"/>
@@ -45,9 +69,8 @@
                         <Label Content="collisions in" HorizontalAlignment="Left" Margin="438,377,0,0" VerticalAlignment="Top" Width="72"/>
                         <TextBox IsReadOnly="True" x:Name="hash_num" HorizontalAlignment="Left" Margin="515,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="56" RenderTransformOrigin="0,0.412"/>
                         <Label Content="files." HorizontalAlignment="Left" Margin="576,375,0,0" VerticalAlignment="Top" Width="49"/>
-                        <Button FontWeight="Bold" Background="Orange" HorizontalAlignment="left" Width="169" Content="See more" Click="SeeMore_Click" Margin="622,377,0,56"/>
+                        <Button FontWeight="Bold" Background="LightSalmon" HorizontalAlignment="left" Width="169" Content="See more" Click="SeeMore_Click" Margin="622,377,0,56"/>
                         <ProgressBar Minimum="0" Maximum="100" x:Name="Generation_loading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="461" Margin="501,46,0,0"/>
-
                         <Label x:Name="Loading_percents" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="706,46,0,0" RenderTransformOrigin="2.684,0.399"/>
                         <Label Visibility="Visible" x:Name="JsonHashesWarningLabel" Content="" HorizontalAlignment="Left" Margin="203,414,0,0" VerticalAlignment="Top" Width="414"/>
                         <TextBox MaxLength="2" x:Name="numFilesToGenerate" HorizontalAlignment="Left" Margin="222,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="45" RenderTransformOrigin="0,0.412" Text="1" TextChanged="numFilesToGenerate_TextChanged"/>
@@ -73,9 +96,9 @@
                         <Label Visibility="Hidden" x:Name="LoadingFilesToHashLabel" Content="Loading files..." HorizontalAlignment="Left" Margin="17,305,0,0" VerticalAlignment="Top" Width="101"/>
                         <ProgressBar Minimum="0" Maximum="100" x:Name="findCollisionLoading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="340" Margin="622,416,0,0"/>
                         <Label x:Name="findCollisionLabel" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="765,416,0,0" RenderTransformOrigin="2.684,0.399"/>
-                        <Label x:Name="HashDescriptionLabel" Content="Hash description + minimum number of messages to achieve 50% probability&#xD;&#xA;of collision" HorizontalAlignment="Left" Margin="501,212,0,0" VerticalAlignment="Top" Width="446" Height="119"/>
                         <TextBox IsReadOnly="True" MaxLength="2" x:Name="searchingCollisionsTime" HorizontalAlignment="Left" Margin="878,379,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="84" RenderTransformOrigin="0,0.412" Text="0ms" TextChanged="numFilesToGenerate_TextChanged"/>
                         <Label Content="Elapsed time" HorizontalAlignment="Left" Margin="796,377,0,0" VerticalAlignment="Top" Width="77" Height="28"/>
+                        <TextBlock x:Name="HashDescription" Background="LightYellow" FontSize="20" FontFamily="Verdana" Margin="501,200,202,127"/>
                     </Grid>
                 </Viewbox>
 
@@ -85,14 +108,85 @@
                 <Viewbox>
                     <Grid Height="458" Width="972">
                         <Label Content="Collision table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="286" Background="#FFC7B4DE"/>
-                        <DataGrid AutoGenerateColumns="false" HorizontalAlignment="Left" Height="422" VerticalAlignment="Top" Width="276" Margin="10,26,0,0">
+                        <DataGrid x:Name="CollisionsTable" AutoGenerateColumns="false" HorizontalAlignment="Left" Height="422" VerticalAlignment="Top" Width="276" Margin="10,36,0,0">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="auto" Header="Filename" Binding="{Binding FileName}"/>
-                                <DataGridTextColumn Width="auto" Header="Message" Binding="{Binding LoadedDataLength}"/>
-                                <DataGridTextColumn Width="*" Header="Hash" Binding="{Binding NumberOfMessages}"/>
+                                <DataGridTextColumn Width="auto" Header="Message" Binding="{Binding HexInput}"/>
+                                <DataGridTextColumn Width="*" Header="Hash" Binding="{Binding HexHash}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <Label Content="Informations" HorizontalAlignment="Left" VerticalAlignment="Top" Width="668" Background="#FFC7B4DE" Margin="304,0,0,0"/>
+                        <ListBox x:Name="FilesWithCollision" HorizontalAlignment="Left" Height="126" VerticalAlignment="Top" Width="658" Margin="304,62,0,0" SelectionChanged="FilesWithCollision_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Filename}"></TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Label  Content="Files with collision" Margin="304,36,563,396"/>
+                        <Image Source="statIcon.png" Margin="649,193,10,0"></Image>
+                    </Grid>
+                </Viewbox>
+            </TabItem>
+            <TabItem Header="Probability table">
+                <Viewbox>
+                    <Grid Height="458" Width="972">
+                        <Image Source="HashMessages.PNG" Margin="0,0,0,159"></Image>
+                        <Image Source="nosaczThinking.jpg" Margin="44,304,801,10"></Image>
+                        <Image Source="nosaczThinking.jpg" Margin="823,308,-137,6">
+                            <Image.RenderTransform>
+                                <ScaleTransform ScaleX="-1"/>
+                            </Image.RenderTransform>
+                        </Image>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="186,355,196,60">
+                            <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Birthday_attack" RequestNavigate="Hyperlink_RequestNavigate">
+                            https://en.wikipedia.org/wiki/Birthday_attack
+                            </Hyperlink>
+                        </TextBlock>
+                    </Grid>
+                </Viewbox>
+            </TabItem>
+            <TabItem Header="Authors">
+                <Viewbox>
+                    <Grid Height="458" Width="972">
+                        <Image x:Name="Paulina" MouseEnter="ImageMouseEnter_event" MouseLeave="ImageMouseLeave_event" Margin="10,10,703,220">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="topSecretProfile.jpg"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="nosaczp.jpg"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock x:Name="PaulinaLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="10,243,703,36">4b50d6210fde8f98b57800f469d0f185538e1419e287b339956407f86cd75bac</TextBlock>
+                        <Image x:Name="Kamil" MouseEnter="ImageMouseEnter_event" MouseLeave="ImageMouseLeave_event" Margin="351,10,362,220">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="topSecretProfile.jpg"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="nosaczk.jpg"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock x:Name="KamilLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="351,243,362,36" Text="15ce329305b63521d7149c50457ef7c79fb2e7675dfbcc9c436a63ed0d3f7a00"/>
+                        <Image x:Name="Hubert" MouseEnter="ImageMouseEnter_event" MouseLeave="ImageMouseLeave_event" Margin="703,10,10,220">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="topSecretProfile.jpg"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="nosaczh.jpg"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock x:Name="HubertLabel" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontSize="30" FontFamily="Courier New" Margin="703,243,10,36" Text="26f9762a8e6a78caf319db200ff42f325018b1f5b31f6dcb59b789d16e481ffe"/>
                     </Grid>
                 </Viewbox>
             </TabItem>

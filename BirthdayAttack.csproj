@@ -59,7 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="BirthdayAttackManager.cs" />
     <Compile Include="Hash\CollisionModel.cs" />
-    <Compile Include="Hash\CollisionResultModel.cs" />
+    <Compile Include="Hash\OwnHash\Crc32.cs" />
     <Compile Include="Hash\OwnHash\ShortMD5.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -74,7 +74,6 @@
     <Compile Include="FileFactory\LoadingFileDto.cs" />
     <Compile Include="Hash\HashManager.cs" />
     <Compile Include="Hash\IHash.cs" />
-    <Compile Include="Hash\OwnHash\HubaHash.cs" />
     <Compile Include="Hash\OwnHash\ShortSha256.cs" />
     <Compile Include="Hash\ResultJsonModel.cs" />
     <Compile Include="Helpers.cs" />
@@ -109,6 +108,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HashMessages.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="statIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hashIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PP.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="topSecretProfile.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="nosaczThinking.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="nosaczh.jpg" />
+    <Resource Include="nosaczk.jpg" />
+    <Resource Include="nosaczp.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

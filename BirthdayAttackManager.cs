@@ -34,6 +34,8 @@ namespace BirthdayAttack
             {
                 if (loadedHashes[i].HexHash == loadedHashes[i + 1].HexHash)
                 {
+                    collisionModel.HasCollision = true;
+
                     if(!collisionModel.Data.Contains(loadedHashes[i]))
                         collisionModel.Data.Add(loadedHashes[i]);
 

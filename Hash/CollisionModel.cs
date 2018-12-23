@@ -10,6 +10,13 @@ namespace BirthdayAttack.Hash
     {
         public string Filename { get; set; }
         public List<ResultJsonModel> Data { get; set; }
+        public bool HasCollision { get; set; }
+        public int NumberOfCollisions {
+            get
+            {
+                return Data.Count/2;
+            }
+        }
 
     }
 }

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BirthdayAttack.Hash.OwnHash
 {
     class ShortSha256 : IHash
     {
-
         public ShortSha256(int hashLengthInBytes)
         {
             if (hashLengthInBytes > 16)
