@@ -11,15 +11,8 @@
             <TabItem Header="Main page">
                 <Viewbox>
                     <Grid Height="458" Width="972">
-                        <TextBlock FontSize="50" FontWeight="Bold" FontFamily="Arial" Margin="10,10,199,381"><Run Text="Birt"/><Run Text="h"/><Run Text="day attack simulator"/><Run Text=" 2019"/></TextBlock>
-                        <Image Source="PP.jpg" Margin="644,148,10,10"></Image>
-                        <Image Source="cake.png" Margin="801,0,54,348"/>
-                        <Button Background="LightBlue" Margin="10,97,833,316">
-                            <TextBlock FontSize="20" FontFamily="Arial">Theory</TextBlock>
-                        </Button>
-                        <Button Background="LightGreen" Margin="163,97,680,316">
-                            <TextBlock FontSize="20" FontFamily="Arial" Text="Instructions"/>
-                        </Button>
+                        <TextBlock FontSize="50" FontWeight="Bold" FontFamily="Arial" Margin="119,10,90,381"><Run Text="Birt"/><Run Text="h"/><Run Text="day attack simulator"/><Run Text=" 2019"/></TextBlock>
+                        <Image Source="cake.png" Margin="291,72,282,10"/>
                     </Grid>
                 </Viewbox>
             </TabItem>

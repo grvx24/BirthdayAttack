@@ -114,7 +114,12 @@ namespace BirthdayAttack
                 MessageBox.Show("No files loaded!");
                 return;
             }
-            SaveFileDialog fileDialog = new SaveFileDialog();
+            SaveFileDialog fileDialog = new SaveFileDialog()
+            {
+                DefaultExt = "json",
+                AddExtension = true
+            };
+
             string filename = null;
             if (fileDialog.ShowDialog() == true)
             {
@@ -510,7 +515,11 @@ namespace BirthdayAttack
             }
 
             string filename;
-            SaveFileDialog fileDialog = new SaveFileDialog();
+            SaveFileDialog fileDialog = new SaveFileDialog
+            {
+                DefaultExt = "json",
+                AddExtension = true
+            };
 
             if (fileDialog.ShowDialog() == true)
             {
