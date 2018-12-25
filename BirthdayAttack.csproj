@@ -62,6 +62,8 @@
     <Compile Include="Hash\OwnHash\Crc16.cs" />
     <Compile Include="Hash\OwnHash\Crc32.cs" />
     <Compile Include="Hash\OwnHash\Crc8.cs" />
+    <Compile Include="Hash\OwnHash\MD4.cs" />
+    <Compile Include="Hash\OwnHash\ShortMD4.cs" />
     <Compile Include="Hash\OwnHash\ShortMD5.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

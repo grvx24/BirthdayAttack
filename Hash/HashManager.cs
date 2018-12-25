@@ -15,6 +15,9 @@ namespace BirthdayAttack.Hash
     {
         private static List<IHash> HashList = new List<IHash>()
         {
+            new ShortMD4(1),
+            new ShortMD4(2),
+            new ShortMD4(4),
             new ShortMD5(1),
             new ShortMD5(2),
             new ShortMD5(4),
