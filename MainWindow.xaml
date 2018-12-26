@@ -125,24 +125,6 @@
                     </Grid>
                 </Viewbox>
             </TabItem>
-            <TabItem Header="Probability table">
-                <Viewbox>
-                    <Grid Height="458" Width="972">
-                        <Image Source="HashMessages.PNG" Margin="0,0,0,159"></Image>
-                        <Image Source="nosaczThinking.jpg" Margin="44,304,801,10"></Image>
-                        <Image Source="nosaczThinking.jpg" Margin="823,308,-137,6">
-                            <Image.RenderTransform>
-                                <ScaleTransform ScaleX="-1"/>
-                            </Image.RenderTransform>
-                        </Image>
-                        <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="186,355,196,60">
-                            <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Birthday_attack" RequestNavigate="Hyperlink_RequestNavigate">
-                            https://en.wikipedia.org/wiki/Birthday_attack
-                            </Hyperlink>
-                        </TextBlock>
-                    </Grid>
-                </Viewbox>
-            </TabItem>
             <TabItem Header="Authors">
                 <Viewbox>
                     <Grid Height="458" Width="972">
