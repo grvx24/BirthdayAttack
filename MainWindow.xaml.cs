@@ -326,7 +326,7 @@ namespace BirthdayAttack
                     hash_num.Text = numOfFiles.ToString();
                     searchingCollisionsTime.Text = sw.ElapsedMilliseconds + "ms";
 
-                    double successPercent = Math.Floor(100.0 * (collisionsFound / (double)numOfFiles));
+                    double successPercent = Math.Round(100.0 * (collisionsFound / (double)numOfFiles));
                     StatisticsLabel.Text = collisionsFound + "/" + numOfFiles + " collisions";
                     StatisticsLabelPercents.Text = successPercent + "%";
 
@@ -339,6 +339,8 @@ namespace BirthdayAttack
                     }
                     else
                     {
+                        RowsInfo.Text = "0 rows";
+                        CollisionsTable.ItemsSource = null;
                         FilesWithCollision.ItemsSource = null;
                     }
                 });
@@ -360,7 +362,7 @@ namespace BirthdayAttack
         private void plusBtn_Click(object sender, RoutedEventArgs e)
         {
             int.TryParse(numFilesToGenerate.Text, out int result);
-            if (result < 999)
+            if (result < 9999)
             {
                 result++;
             }

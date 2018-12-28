@@ -66,7 +66,7 @@
                         <ProgressBar Minimum="0" Maximum="100" x:Name="Generation_loading" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="461" Margin="501,46,0,0"/>
                         <Label x:Name="Loading_percents" Content="0%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="706,46,0,0" RenderTransformOrigin="2.684,0.399"/>
                         <Label Visibility="Visible" x:Name="JsonHashesWarningLabel" Content="" HorizontalAlignment="Left" Margin="203,414,0,0" VerticalAlignment="Top" Width="414"/>
-                        <TextBox MaxLength="3" x:Name="numFilesToGenerate" HorizontalAlignment="Left" Margin="222,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="45" RenderTransformOrigin="0,0.412" Text="1"/>
+                        <TextBox MaxLength="4" x:Name="numFilesToGenerate" HorizontalAlignment="Left" Margin="222,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="45" RenderTransformOrigin="0,0.412" Text="1"/>
                         <Label Content="Number of files" HorizontalAlignment="Left" Margin="197,64,0,0" VerticalAlignment="Top" Width="94"/>
                         <Button x:Name="plusBtn" Background="LimeGreen" HorizontalAlignment="left" Width="19" Content="+" Margin="267,46,0,388" Click="plusBtn_Click"/>
                         <Button x:Name="minusBtn" Background="Red" HorizontalAlignment="left" Width="19" Content="-" Margin="203,46,0,388" Click="minusBtn_Click"/>
