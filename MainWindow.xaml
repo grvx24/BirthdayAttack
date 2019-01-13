@@ -101,7 +101,7 @@
                 <Viewbox>
                     <Grid Height="458" Width="972">
                         <Label Content="Collision table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="286" Background="#FFC7B4DE"/>
-                        <DataGrid x:Name="CollisionsTable" AutoGenerateColumns="false" HorizontalAlignment="Left" Height="422" VerticalAlignment="Top" Width="276" Margin="10,36,0,0">
+                        <DataGrid IsReadOnly="True" x:Name="CollisionsTable" AutoGenerateColumns="false" HorizontalAlignment="Left" Height="422" VerticalAlignment="Top" Width="276" Margin="10,36,0,0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="auto" Header="Message" Binding="{Binding HexInput}"/>
                                 <DataGridTextColumn Width="*" Header="Hash" Binding="{Binding HexHash}"/>
